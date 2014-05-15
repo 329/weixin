@@ -3,7 +3,9 @@ var router = express.Router();
 
 /* GET users listing. */
 router.get('/', function(req, res) {
-  res.send('respond with a resource');
+  	var bodydata = req.param('body');
+	var name = req.param('name');
+	res.send('hello '+name);
 });
 
 module.exports = router;

@@ -9,7 +9,7 @@ router.get('/', function(req, res) {
 });
 
 var findxmlbyname = function(xml){
-	xml.
+	//xml.
 };
 
 module.exports = router;
