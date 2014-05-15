@@ -6,7 +6,10 @@ router.get('/', function(req, res) {
 	var bodydata = req.param('body');
 	var name = req.param('name');
   	res.send('hello '+name);
-  // res.send('chendong shi sb');
 });
+
+var findxmlbyname = function(xml){
+	xml.
+};
 
 module.exports = router;
