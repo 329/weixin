@@ -19,6 +19,8 @@ var auth = require('./middlewares/authorization');
 
 module.exports = function (router) {
   var hello = require('../app/controllers/hello');
+  var messages = require('../app/controllers/messages');
+  var auth = require('../app/controllers/authentication');
   // user routes
   // app.get('/login', users.login)
   // app.get('/signup', users.signup)
@@ -27,6 +29,8 @@ module.exports = function (router) {
   // home route
   router.get('/', hello.index);
 
+  router.get('/messages', messages.index);
+  router.get('/auth', auth.index);
 
 
   router.use(function(err, req, res, next){

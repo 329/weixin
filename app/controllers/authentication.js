@@ -1,8 +1,4 @@
-var express = require('express');
-var router = express.Router();
-
-/* GET users listing. */
-router.get('/', function(req, res) {
+exports.index = function(req, res) {
 	var signature = req.param('signature');
 
 	var nonce = req.param('nonce');
@@ -16,7 +12,7 @@ router.get('/', function(req, res) {
 		echostr = req.param('echostr');
 	}
   	res.send(echostr);
-});
+};
 
 function sha1(content){
 	var crypto = require('crypto');
@@ -25,5 +21,3 @@ function sha1(content){
 	var d = shasum.digest('hex');
 	return d;
 }
-
-module.exports = router;
