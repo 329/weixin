@@ -1,5 +1,17 @@
+var mongoose = require('mongoose'),
+    Post = mongoose.model('Post');
+
+
 exports.index = function(req, res) {
-	res.render('hello/index', {
-		title: 'Hello'
+	var post = new Post({
+		title: 'hello',
+		content: 'everyone listen me!'
 	});
+	post.save(function(err) {
+		if(err) {
+			return res.render('404');
+		}
+		res.render('hello/index', post);
+	});
+	
 }
