@@ -17,7 +17,7 @@ var auth = require('./middlewares/authorization');
  * Expose routes
  */
 
-module.exports = function (app, passport) {
+module.exports = function (app) {
   var hello = require('../app/controllers/hello');
   // user routes
   // app.get('/login', users.login)
@@ -25,6 +25,6 @@ module.exports = function (app, passport) {
   // app.get('/logout', users.logout)
 
   // home route
-  // app.get('/', hello.index);
+  app.get('/', hello.index);
 
 }
