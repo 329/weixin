@@ -1,0 +1,9 @@
+{
+  "name": "weixin",
+  "version": "1.0.0",
+  "private": true,
+  "license": "MIT",
+  "dependencies": {
+    "jquery": "1.10"
+  }
+}
