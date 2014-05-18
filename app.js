@@ -37,8 +37,9 @@ fs.readdirSync(models_path).forEach(function (file) {
 var app = express();
 //express settings
 require('./config/express')(app, config);
-// view engine setup
 
-require('./config/routes')(app);
+var router = express.Router();
+require('./config/routes')(router);
+app.use(router);
 
 module.exports = app;
