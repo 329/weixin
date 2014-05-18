@@ -7,11 +7,11 @@ exports.index = function(req, res) {
 		title: 'hello',
 		content: 'everyone listen me!'
 	});
-	post.save(function(err) {
-		if(err) {
-			return res.render('404');
-		}
-		res.render('hello/index', post);
-	});
-	
+	// post.save(function(err) {
+	// 	if(err) {
+	// 		return res.render('404');
+	// 	}
+	// 	res.render('hello/index', post);
+	// });
+	res.render('hello/index', post);
 }
