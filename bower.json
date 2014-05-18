@@ -4,6 +4,7 @@
   "private": true,
   "license": "MIT",
   "dependencies": {
-    "jquery": "1.10"
+    "jquery": "1.10",
+    "pure": "~0.4.2"
   }
 }
