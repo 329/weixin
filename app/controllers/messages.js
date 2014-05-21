@@ -1,3 +1,6 @@
+var mongoose = require('mongoose'),
+    Post = mongoose.model('Post');
+
 var findxmlbyname = function(xml,name){
 	var sindex = xml.indexOf("<"+name+">");
 	var eindex = xml.indexOf("</"+name+">");
@@ -8,19 +11,27 @@ var findxmlbyname = function(xml,name){
 
 exports.index = function(req, res) {
 	var bodydataXml = req.param('body');
-	var MsgType=findxmlbyname(bodydataXml,"MsgType");
-	var ToUserName=findxmlbyname(bodydataXml,"ToUserName");
-	var FromUserName=findxmlbyname(bodydataXml,"FromUserName");
-	var CreateTime=findxmlbyname(bodydataXml,"CreateTime");
-	var Content=findxmlbyname(bodydataXml,"Content");
-	var MsgId=findxmlbyname(bodydataXml,"MsgId");
+	if(bodydataXml!=null){
+		var MsgType=findxmlbyname(bodydataXml,"MsgType");
+		var ToUserName=findxmlbyname(bodydataXml,"ToUserName");
+		var FromUserName=findxmlbyname(bodydataXml,"FromUserName");
+		var CreateTime=findxmlbyname(bodydataXml,"CreateTime");
+		var Content=findxmlbyname(bodydataXml,"Content");
+		var MsgId=findxmlbyname(bodydataXml,"MsgId");
+	}
 
 	if(MsgType=='text'){
 		
 	}
 
-  	res.send(ToUserName+":"+FromUserName+":"+CreateTime+":"+
-  		MsgType+":"+MsgType+":"+Content+":"+MsgId);
+	var post = new Post({
+		title: 'send message to user',
+		content: 'everyone listen me!',
+		
+	});
+	res.render('messages/index', post);
+  	// res.send(ToUserName+":"+FromUserName+":"+CreateTime+":"+
+  	// 	MsgType+":"+MsgType+":"+Content+":"+MsgId);
 }
 
 
