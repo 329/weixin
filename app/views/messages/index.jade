@@ -1,0 +1,23 @@
+extends ../layouts/default
+
+block content
+  h1#h1temp welcom to send message
+  form#form1(name="sendmessage",action="/sendmessage")
+    table
+      tr 
+        td 发送的消息:
+        td 
+          input(type="text",name="message")
+      tr
+        td 接收方帐号:
+        td 
+          input(type="text",name="ToUserName")      
+      tr
+        td 接收方帐号:
+        td 
+          input(type="text",name="ToUserName")
+      tr
+        td 
+          input(type="button" class="pure-button" name="sendmessage" value="发送")
+          input(type="hidden" name="access_token" value=access_token)
+  
