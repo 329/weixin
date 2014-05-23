@@ -1,5 +1,6 @@
 var mongoose = require('mongoose'),
-    Post = mongoose.model('Post');
+    Post = mongoose.model('Post'),
+    messagebean = mongoose.model('Messagebean');
 var publicmethod = require('./public_method.js');
 
 var findxmlbyname = function(xml,name){
@@ -37,10 +38,20 @@ exports.weixin_message = function(req,res){
 		var ToUserName=findxmlbyname(bodydataXml,"ToUserName");//开发者微信号
 		if(MsgType=='text'){
 			var FromUserName=findxmlbyname(bodydataXml,"FromUserName");
-			console.log(ToUserName+">"+文本+">"+FromUserName);
+			console.log(ToUserName+">文本>"+FromUserName);
 			var CreateTime=findxmlbyname(bodydataXml,"CreateTime");
 			var Content=findxmlbyname(bodydataXml,"Content");
 			var MsgId=findxmlbyname(bodydataXml,"MsgId");
+			var createtime_temp = new Date().setTime(CreateTime);
+			var messagebean1 = new messagebean({
+				MsgType:MsgType,
+				ToUserName:ToUserName,
+				FromUserName:FromUserName,
+				Content:Content,
+				MsgId:MsgId,
+				CreateTime:createtime_temp
+			});
+			messagebean1.save();
 		}
 	}
 	//验证接口
