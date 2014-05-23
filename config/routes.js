@@ -30,6 +30,7 @@ module.exports = function (router) {
   router.get('/', hello.index);
 
   router.get('/messages', messages.index);
+  router.get('/messages/weixin_message', messages.weixin_message);
   router.get('/auth', auth.index);
 
 
