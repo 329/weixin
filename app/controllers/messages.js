@@ -29,6 +29,8 @@ exports.index = function(req, res) {
 }
 
 exports.weixin_message = function(req,res){
+  var returnString = "";
+
   var bodydataXml = req.param('body');
 	if(bodydataXml!=null){
 		var MsgType=findxmlbyname(bodydataXml,"MsgType");
@@ -41,6 +43,11 @@ exports.weixin_message = function(req,res){
 			var MsgId=findxmlbyname(bodydataXml,"MsgId");
 		}
 	}
-	res.send('');
+	//验证接口
+	if(req.param('echostr')!=null){
+		returnString = req.param('echostr');
+	}
+	console.log(returnString);
+	res.send(returnString);
 }
 
